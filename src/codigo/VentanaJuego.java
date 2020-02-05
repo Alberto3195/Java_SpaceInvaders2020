@@ -26,7 +26,7 @@ public class VentanaJuego extends javax.swing.JFrame {
 
     BufferedImage buffer = null;
     Marciano miMarciano = new Marciano(ANCHOPANTALLA); //variable de instancia
-    
+    int contador = 0;
     //Bucle animacion del juego
     //En este caso es un hilo de ejecucion nuevo que se encarga
     //de refrescar el contenido de la pantalla
@@ -40,15 +40,18 @@ public class VentanaJuego extends javax.swing.JFrame {
 
     private void bucleJuego() {
         //El metodo de bucle gobierna el redibujado de los objetos en el jPanel
-
+        contador++;
         //primero borro todo lo que hay en el buffer
         Graphics2D g2 = (Graphics2D) buffer.getGraphics();
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, ANCHOPANTALLA, ALTOPANTALLA);
-        /////////////////////////////////////////////////////////////
-        g2.drawImage(miMarciano.imagen1, 10, 10, null);
-        g2.drawImage(miMarciano.imagen2, 10, 100, null);
-        
+        if (contador < 50) {
+            g2.drawImage(miMarciano.imagen1, 10, 10, null);
+        } else if (contador < 100) {
+            g2.drawImage(miMarciano.imagen2, 10, 10, null);
+        } else {
+            contador = 0;
+        }
         /////////////////////////////////////////////////////////////
         g2 = (Graphics2D) jPanel1.getGraphics();
         g2.drawImage(buffer, 0, 0, null);
