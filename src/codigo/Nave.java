@@ -32,13 +32,31 @@ public class Nave {
 
         }
     }
-    
-    public void mueve(){ //Chequea las variables que tiene internas
-        if (izquierda){
-            posX--;
+
+    public void mueve() { //Chequea las variables que tiene internas
+        if (izquierda && posX > 0) {
+            posX -= 3;
         }
-        if(derecha){
-            posX++;
+        if (derecha && posX < VentanaJuego.ANCHOPANTALLA - (imagen.getWidth(null) + (imagen.getWidth(null) / 2))) {
+            posX += 3;
         }
+    }
+
+    public boolean isDerecha() {
+        return derecha;
+    }
+
+    public void setDerecha(boolean derecha) {
+        this.derecha = derecha;
+        this.izquierda = false;
+    }
+
+    public boolean isIzquierda() {
+        return izquierda;
+    }
+
+    public void setIzquierda(boolean izquierda) {
+        this.izquierda = izquierda;
+        this.derecha = false;
     }
 }
