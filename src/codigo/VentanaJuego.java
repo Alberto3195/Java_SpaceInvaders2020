@@ -40,6 +40,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     });
     Marciano miMarciano = new Marciano(ANCHOPANTALLA); //variable de instancia
     Nave miNave = new Nave();
+    Disparo miDisparo = new Disparo();
 
     private void bucleJuego() {
         //El metodo de bucle gobierna el redibujado de los objetos en el jPanel
@@ -58,7 +59,9 @@ public class VentanaJuego extends javax.swing.JFrame {
         }
         //dibujo la nave
         g2.drawImage(miNave.imagen, miNave.posX, miNave.posY, null);
+        g2.drawImage(miDisparo.imagen, miDisparo.posX, miDisparo.posY, null);
         miNave.mueve();
+        miDisparo.mueve();
         /////////////////////////////////////////////////////////////
         g2 = (Graphics2D) jPanel1.getGraphics();//dibujo de golpe el marciano
         g2.drawImage(buffer, 0, 0, null);
@@ -138,7 +141,14 @@ public class VentanaJuego extends javax.swing.JFrame {
             case KeyEvent.VK_RIGHT:
                 miNave.setDerecha(true);
                 break;
+            case KeyEvent.VK_SPACE:
+                miDisparo.posX = miNave.posX;
+                miDisparo.posY = miNave.posY;
+                break;
         }
+        // if (miNave.posX == ANCHOPANTALLA) {
+        //    miNave.setDerecha(false);
+        // }
     }//GEN-LAST:event_formKeyPressed
 
     private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
