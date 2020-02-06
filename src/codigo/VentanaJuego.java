@@ -142,8 +142,7 @@ public class VentanaJuego extends javax.swing.JFrame {
                 miNave.setDerecha(true);
                 break;
             case KeyEvent.VK_SPACE:
-                miDisparo.posX = miNave.posX;
-                miDisparo.posY = miNave.posY;
+                miDisparo.posDisp(miNave);
                 break;
         }
         // if (miNave.posX == ANCHOPANTALLA) {
